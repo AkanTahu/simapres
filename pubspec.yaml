@@ -1,0 +1,37 @@
+name: simapres
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  http: ^1.1.0
+  csv: ^5.0.2
+  flutter:
+    sdk: flutter
+  dio: ^5.3.2
+  image_picker:
+  intl: ^0.17.0
+  pretty_animated_buttons: ^0.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo.png
+
+    # fonts:
+    #   - family: proximanova
+    #     fonts:
+    #       - asset: fonts/Fontspring-DEMO-proximanova-black.otf
+    #       - asset: fonts/Fontspring-DEMO-proximanova-bold.otf
+    #       - asset: fonts/Fontspring-DEMO-proximanova-light.otf
+    #       - asset: fonts/Fontspring-DEMO-proximanova-medium.otf
+    #       - asset: fonts/Fontspring-DEMO-proximanova-regular.otf
+    #       - asset: fonts/Fontspring-DEMO-proximanova-thin.otf
