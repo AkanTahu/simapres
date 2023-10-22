@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
         title: Text("SIMAPRES INDRO"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(13),
