@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("SIMAPRES"),
+        title: Text("SIMAPRES INDRO"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -255,16 +255,16 @@ class _nextInputState extends State<nextInput> {
             ),
           ),
           PrettyWaveButton(
-                child: const Text(
-                  'Upload Foto Sertifikat',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () {
-                  myAlert();
-                },
+            child: const Text(
+              'Upload Foto Sertifikat',
+              style: TextStyle(
+                color: Colors.white,
               ),
+            ),
+            onPressed: () {
+              myAlert();
+            },
+          ),
           SizedBox(
             height: 10,
           ),
@@ -291,8 +291,10 @@ class _nextInputState extends State<nextInput> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Pilih Tingkat Sertifikat : ',
-                    style: TextStyle(fontSize: 20),),
+              Text(
+                'Pilih Tingkat Sertifikat : ',
+                style: TextStyle(fontSize: 20),
+              ),
               DropdownButtonExample(),
             ],
           ),
@@ -304,12 +306,12 @@ class _nextInputState extends State<nextInput> {
                 child: TextField(
                   controller: dateinput, //editing controller of this TextField
                   decoration: InputDecoration(
-                      labelText: "Pilih Tanggal Event / Kejuaraan / Prestasi",
-                      prefixIcon: Icon(Icons.calendar_today),
-                      border: myinputborder(),
-                      enabledBorder: myinputborder(),
-                      focusedBorder: myfocusborder(), //label text of field
-                      ),
+                    labelText: "Pilih Tanggal Event / Kejuaraan / Prestasi",
+                    prefixIcon: Icon(Icons.calendar_today),
+                    border: myinputborder(),
+                    enabledBorder: myinputborder(),
+                    focusedBorder: myfocusborder(), //label text of field
+                  ),
                   readOnly:
                       true, //set it true, so that user will not able to edit text
                   onTap: () async {
@@ -399,8 +401,10 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
       items: list.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(value,
-                    style: TextStyle(fontSize: 20),),
+          child: Text(
+            value,
+            style: TextStyle(fontSize: 20),
+          ),
         );
       }).toList(),
     );
