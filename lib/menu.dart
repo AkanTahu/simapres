@@ -28,7 +28,7 @@ class Menu extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: PrettyWaveButton(
                   child: const Text(
-                    'Rangking per Jurusan ninda',
+                    'Rangking per Jurusan',
                     style: TextStyle(
                       color: Colors.white,
                     ),
