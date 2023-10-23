@@ -27,48 +27,48 @@ class Menu extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: PrettyWaveButton(
-                      child: const Text(
-                        'Rangking per Jurusan',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {},
+                  child: const Text(
+                    'Rangking per Jurusan ninda',
+                    style: TextStyle(
+                      color: Colors.white,
                     ),
+                  ),
+                  onPressed: () {},
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: PrettyWaveButton(
-                      child: const Text(
-                        'Daftar Prestasi',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
+                  child: const Text(
+                    'Daftar Prestasi',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => DaftarPrestasi()),
                     );
-                      },
-                    ),
+                  },
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: PrettyWaveButton(
-                      child: const Text(
-                        'Input Sertifikat',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {
+                  child: const Text(
+                    'Input Sertifikat',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const HomePage()),
                     );
                   },
-                    ),
+                ),
               ),
             ],
           ),
