@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'daftarprestasi.dart';
+import './admin/login.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
+  final Color btnColor = Colors.teal;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +71,19 @@ class Menu extends StatelessWidget {
                     );
                   },
                 ),
+              ),
+              PrettySlideIconButton(
+                foregroundColor: btnColor,
+                icon: Icons.arrow_forward,
+                label: 'Masuk Admin',
+                slidePosition: SlidePosition.right,
+                labelStyle: Theme.of(context).textTheme.bodyLarge!,
+                onPressed:(){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const LoginAdmin()),
+                    );
+                },
               ),
             ],
           ),
