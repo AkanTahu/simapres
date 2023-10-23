@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'daftarprestasi.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 
 class Menu extends StatelessWidget {
@@ -39,12 +40,17 @@ class Menu extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: PrettyWaveButton(
                       child: const Text(
-                        'Daftar Prestasi Fari',
+                        'Daftar Prestasi',
                         style: TextStyle(
                           color: Colors.white,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DaftarPrestasi()),
+                    );
+                      },
                     ),
               ),
               Padding(
