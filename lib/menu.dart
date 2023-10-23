@@ -39,7 +39,7 @@ class Menu extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: PrettyWaveButton(
                       child: const Text(
-                        'Daftar Prestasi',
+                        'Daftar Prestasi Fari',
                         style: TextStyle(
                           color: Colors.white,
                         ),
