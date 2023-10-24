@@ -20,7 +20,7 @@ class _DaftarPrestasiState extends State<DaftarPrestasi> {
       backgroundColor: Color.fromARGB(255, 232, 240, 237),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 64, 65, 68),
-        title: Text('Tabel Mahasiswa Berprrstasi'),
+        title: Text('Tabel Mahasiswa Berprestasi'),
       ),
       body: Column(
         children: [
