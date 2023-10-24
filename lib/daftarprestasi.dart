@@ -24,12 +24,18 @@ class _DaftarPrestasiState extends State<DaftarPrestasi> {
       ),
       body: Column(
         children: [
-          Center(
-            child: Text('Tabel Mahasiswa Berprestasi',
-                style:
-                    TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Text('Tabel Mahasiswa Berprestasi',
+                  style:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            ),
           ),
-         DropdownButtonExample(),
+         Padding(
+           padding: const EdgeInsets.all(8.0),
+           child: DropdownButtonExample(),
+         ),
           DataTable(
             columns: [
               DataColumn(label: Text('Nama')),
