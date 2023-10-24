@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'daftarprestasi.dart';
+import 'rangkingSaya.dart';
 import './admin/login.dart';
+import 'daftarJurusan.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 
 class Menu extends StatelessWidget {
@@ -24,7 +26,12 @@ class Menu extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BelajarForm()),
+                    );
+                },
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -35,7 +42,12 @@ class Menu extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RankingJurusan()),
+                    );
+                  },
                 ),
               ),
               Padding(
@@ -78,11 +90,11 @@ class Menu extends StatelessWidget {
                 label: 'Masuk Admin',
                 slidePosition: SlidePosition.right,
                 labelStyle: Theme.of(context).textTheme.bodyLarge!,
-                onPressed:(){
+                onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LoginAdmin()),
-                    );
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginAdmin()),
+                  );
                 },
               ),
             ],
