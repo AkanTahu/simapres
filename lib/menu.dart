@@ -45,11 +45,7 @@ class Menu extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-<<<<<<< Updated upstream
-                      MaterialPageRoute(builder: (context) => DaftarPrestasi()),
-=======
                       MaterialPageRoute(builder: (context) => RankingJurusan()),
->>>>>>> Stashed changes
                     );
                   },
                 ),
