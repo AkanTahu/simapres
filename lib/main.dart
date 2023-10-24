@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'menu.dart';
+import 'registerMhsSertif.dart';
 // import 'dart:async' show Future;
 // import 'dart:io';
 // import 'dart:convert';
@@ -32,6 +33,10 @@ import 'menu.dart';
 TextEditingController inputEmail = new TextEditingController();
 TextEditingController inputPass = new TextEditingController();
 TextEditingController dateinput = TextEditingController();
+
+TextEditingController inputUser = new TextEditingController();
+TextEditingController inputNIMmhs = new TextEditingController();
+TextEditingController inputPassRegMhs = new TextEditingController();
 
 const List<String> list = <String>[
   'Kota',
@@ -78,7 +83,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("SIMAPRES INDRO"),
+        title: Text("SIMAPRES"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -112,14 +117,26 @@ class _HomePageState extends State<HomePage> {
             label: 'Submit',
             onPressed: ButtonNext,
           ),
+          // Padding(
+          //   padding: const EdgeInsets.all(15.0),
+          //   child: PrettyNeumorphicButton(
+          //     label: 'Forgot Password',
+          //     onPressed: () {
+          //       Navigator.push(
+          //         context,
+          //         MaterialPageRoute(builder: (context) => const LupaPass()),
+          //       );
+          //     },
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: PrettyNeumorphicButton(
-              label: 'Forgot Password',
+              label: 'Register Akun Mahasiswa',
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const LupaPass()),
+                  MaterialPageRoute(builder: (context) => const RegisterAkunMhs()),
                 );
               },
             ),
@@ -431,3 +448,4 @@ class LupaPass extends StatelessWidget {
     );
   }
 }
+
