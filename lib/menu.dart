@@ -4,6 +4,7 @@ import 'daftarprestasi.dart';
 import 'rangkingSaya.dart';
 import './admin/login.dart';
 import 'daftarJurusan.dart';
+import 'inputSertifikat.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 
 class Menu extends StatelessWidget {
@@ -12,92 +13,87 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Image.asset('assets/logo.png', scale: 0.5),
-              PrettyWaveButton(
-                child: const Text(
-                  'Rangking Anda',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => BelajarForm()),
-                    );
-                },
+          // Image.asset('assets/logo.png', scale: 0.5),
+          PrettyWaveButton(
+            child: const Text(
+              'Rangking Anda',
+              style: TextStyle(
+                color: Colors.white,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: PrettyWaveButton(
-                  child: const Text(
-                    'Rangking per Jurusan',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => RankingJurusan()),
-                    );
-                  },
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BelajarForm()),
+                );
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: PrettyWaveButton(
+              child: const Text(
+                'Rangking per Jurusan',
+                style: TextStyle(
+                  color: Colors.white,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: PrettyWaveButton(
-                  child: const Text(
-                    'Daftar Prestasi',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => DaftarPrestasi()),
-                    );
-                  },
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RankingJurusan()),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: PrettyWaveButton(
+              child: const Text(
+                'Daftar Prestasi',
+                style: TextStyle(
+                  color: Colors.white,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: PrettyWaveButton(
-                  child: const Text(
-                    'Input Sertifikat',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
-                    );
-                  },
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DaftarPrestasi()),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: PrettyWaveButton(
+              child: const Text(
+                'Input Sertifikat',
+                style: TextStyle(
+                  color: Colors.white,
                 ),
               ),
-              PrettySlideIconButton(
-                foregroundColor: btnColor,
-                icon: Icons.arrow_forward,
-                label: 'Masuk Admin',
-                slidePosition: SlidePosition.right,
-                labelStyle: Theme.of(context).textTheme.bodyLarge!,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginAdmin()),
-                  );
-                },
-              ),
-            ],
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const inputSertifikat()),
+                );
+              },
+            ),
+          ),
+          PrettySlideIconButton(
+            foregroundColor: btnColor,
+            icon: Icons.arrow_forward,
+            label: 'Masuk Admin',
+            slidePosition: SlidePosition.right,
+            labelStyle: Theme.of(context).textTheme.bodyLarge!,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginAdmin()),
+              );
+            },
           ),
         ],
       ),
