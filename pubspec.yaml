@@ -16,6 +16,7 @@ dependencies:
   intl: ^0.17.0
   pretty_animated_buttons: ^0.0.1
   dropdown_button2: ^2.3.8
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -26,15 +27,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/logo.png
-  fonts:
-    - family: Inter 
-      fonts:
-        - asset: fonts/Inter-Black.ttf
-        - asset: fonts/Inter-Bold.ttf
-        - asset: fonts/Inter-ExtraBold.ttf
-        - asset: fonts/Inter-ExtraLight.ttf
-        - asset: fonts/Inter-Light.ttf
-        - asset: fonts/Inter-Medium.ttf
-        - asset: fonts/Inter-Regular.ttf
-        - asset: fonts/Inter-SemiBold.ttf
-        - asset: fonts/Inter-Thin.ttf
