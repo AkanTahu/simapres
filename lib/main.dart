@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Custom Fonts',
+      title: 'SIMAPRES',
       // Set Raleway as the default app font.
       home: const Menu(),
       debugShowCheckedModeBanner: false
