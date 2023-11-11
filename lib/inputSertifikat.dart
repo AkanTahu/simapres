@@ -22,6 +22,7 @@ const List<String> list = <String>[
   'Internasional'
 ];
 
+
 class inputSertifikat extends StatefulWidget {
   const inputSertifikat ({Key? key}) : super(key: key);
 
@@ -30,12 +31,14 @@ class inputSertifikat extends StatefulWidget {
 }
 
 class inputSertifikatState extends State<inputSertifikat > {
-  void ButtonNext() {
-    Navigator.pushNamed(context, nextInput.routeName);
-  }
 
   @override
   Widget build(BuildContext context) {
+
+    var routes = <String, WidgetBuilder>{
+      nextInput.routeName: (BuildContext context) => new nextInput(),
+    };
+
     return Scaffold(
       appBar: AppBar(
         title: Text("SIMAPRES"),
@@ -70,7 +73,7 @@ class inputSertifikatState extends State<inputSertifikat > {
           ),
           PrettyNeumorphicButton(
             label: 'Submit',
-            onPressed: ButtonNext,
+            onPressed: (){Navigator.pushNamed(context, nextInput.routeName);},
           ),
           // Padding(
           //   padding: const EdgeInsets.all(15.0),
@@ -101,6 +104,7 @@ class inputSertifikatState extends State<inputSertifikat > {
 
       // Display the contents from the CSV file
     );
+    
   }
 
   OutlineInputBorder myinputborder() {

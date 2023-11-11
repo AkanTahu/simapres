@@ -9,6 +9,7 @@ import 'package:button_animations/button_animations.dart';
 import 'package:button_animations/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 class Menu extends StatelessWidget {
   const Menu({super.key});
   final Color btnColor = Colors.teal;
