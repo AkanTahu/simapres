@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'package:dio/dio.dart';
 import 'rangkingSaya.dart';
 import './admin/login.dart';
 import 'daftarJurusan.dart';
@@ -9,12 +10,63 @@ import 'package:button_animations/button_animations.dart';
 import 'package:button_animations/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+final dio = Dio();
+var all_data = [];
+var top5Data = [];
+String url_domain = "http://127.0.0.1:8000/";
+String url_all_data = url_domain + "api/all_data";
+String url_top5 = url_domain + "api/top5_data";
+String url_create_data = url_domain + "api/create_data";
+String url_show_data = url_domain + "api/show_data";
+String url_update_data = url_domain + "api/edit_data";
+String url_delete_data = url_domain + "api/delete_data";
 
-class Menu extends StatelessWidget {
-  const Menu({super.key});
-  final Color btnColor = Colors.teal;
+class MyAppMenu extends StatelessWidget {
+  const MyAppMenu({super.key});
+// This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'SIMAPRES',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: data_tes(),
+    );
+  }
+}
+
+class data_tes extends StatefulWidget {
+  const data_tes({super.key});
+  @override
+  State<data_tes> createState() => _data_tesState();
+}
+
+class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print('MyAppMenu state = $state');
+    if (state == AppLifecycleState.inactive) {
+// app transitioning to other state.
+    } else if (state == AppLifecycleState.paused) {
+// app is on the background.
+    } else if (state == AppLifecycleState.detached) {
+// flutter engine is running but detached from views
+    } else if (state == AppLifecycleState.resumed) {
+// app is visible and running.
+      runApp(MyAppMenu()); // run your App class again
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    showtop5();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
@@ -99,7 +151,7 @@ class Menu extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
               child: Container(
                 width: 520,
-                height: 250,
+                height: 350,
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.white,
@@ -147,23 +199,12 @@ class Menu extends StatelessWidget {
                           DataColumn(label: Text('Prodi')),
                         ],
                         rows: [
+                          for (var data in top5Data)
                           DataRow(cells: [
                             DataCell(Text('1')),
-                            DataCell(Text('Febri putri')),
-                            DataCell(Text('Teknik Elektro')),
-                            DataCell(Text('D-IV SKL')),
-                          ]),
-                          DataRow(cells: [
-                            DataCell(Text('2')),
-                            DataCell(Text('Shafa Ardhia')),
-                            DataCell(Text('Teknik Sipil')),
-                            DataCell(Text('D-IV MRK')),
-                          ]),
-                          DataRow(cells: [
-                            DataCell(Text('3')),
-                            DataCell(Text('Bimo Ardi')),
-                            DataCell(Text('Teknik Mesin')),
-                            DataCell(Text('D-III TM')),
+                            DataCell(Text(data['nama'])),
+                            DataCell(Text(data['prodi'])),
+                            DataCell(Text(data['jurusan'])),
                           ]),
                         ],
                       ),
@@ -173,6 +214,17 @@ class Menu extends StatelessWidget {
               ),
             ),
             // Image.asset('assets/logo.png', scale: 0.5),
+            Container(
+              child: MaterialButton(
+                color: Colors.grey,
+                height: 30,
+                minWidth: 20,
+                onPressed: () {
+                  didChangeAppLifecycleState(AppLifecycleState.resumed);
+                },
+                child: Text("Refresh Data"),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
               child: AnimatedButton(
@@ -268,4 +320,20 @@ class Menu extends StatelessWidget {
       ),
     );
   }
+}
+
+void show_all_data() async {
+  Response response;
+  response = await dio.post(
+    url_all_data,
+  );
+  all_data = response.data;
+}
+
+void showtop5() async {
+  Response response;
+  response = await dio.post(
+    url_top5,
+  );
+  top5Data = response.data;
 }

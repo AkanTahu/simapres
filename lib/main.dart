@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'SIMAPRES',
       // Set Raleway as the default app font.
-      home: const Menu(),
+      home: const MyAppMenu(),
       debugShowCheckedModeBanner: false
     );
   }
