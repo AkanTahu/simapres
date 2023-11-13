@@ -1,12 +1,20 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:simapres/tesbackend.dart';
 import 'main.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:dio/dio.dart';
 
 TextEditingController inputUser = new TextEditingController();
 TextEditingController inputNIMmhs = new TextEditingController();
 TextEditingController inputPass = new TextEditingController();
+
+final dio = Dio();
+String url_domain = "http://127.0.0.1:8000/";
+String url_create_data = url_domain + "api/create_data";
+String url_updateAkun = url_domain + "api/updateAkun";
 
 class RegisterAkunMhs extends StatefulWidget {
   const RegisterAkunMhs({Key? key}) : super(key: key);
@@ -18,12 +26,33 @@ class RegisterAkunMhs extends StatefulWidget {
 class _RegisterAkunMhsState extends State<RegisterAkunMhs> {
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(" Register Mahasiswa"),
-      ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Container(
+            height: 180.0,
+            // width: 300.0,
+            color: Colors.transparent,
+            child: Container(
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 1, 159, 151),
+                    borderRadius: BorderRadius.vertical(
+                    bottom: Radius.circular(50),
+                  ),),
+                child: new Center(
+                  child: Image(image: AssetImage('assets/SIMAPRESputih.png'))
+                )),
+          ),
+          Center(
+            child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    child: Text(
+                      'REGISTRASI',
+                      style: GoogleFonts.inter(
+                          fontWeight: FontWeight.w700, fontSize: 30),
+                    ),
+                  ),
+          ),
           Padding(
             padding: const EdgeInsets.all(13),
             child: TextField(
@@ -65,7 +94,9 @@ class _RegisterAkunMhsState extends State<RegisterAkunMhs> {
           ),
           PrettyNeumorphicButton(
             label: 'Submit',
-            onPressed: (){},
+            onPressed: () {
+              updateAkun(inputUser.text, inputNIMmhs.text, inputPass.text);
+            },
           ),
         ],
       ),
@@ -73,6 +104,7 @@ class _RegisterAkunMhsState extends State<RegisterAkunMhs> {
       // Display the contents from the CSV file
     );
   }
+
   OutlineInputBorder myinputborder() {
     //return type is OutlineInputBorder
     return OutlineInputBorder(
@@ -92,4 +124,15 @@ class _RegisterAkunMhsState extends State<RegisterAkunMhs> {
           width: 3,
         ));
   }
-}  
+}
+
+void updateAkun(String username, String nim, String password) async {
+  Response response;
+  response = await dio.post(
+    url_updateAkun,
+    queryParameters: {'username': username, 'nim': nim, 'password': password},
+  );
+  inputUser.text = "";
+  inputNIMmhs.text = "";
+  inputPass.text = "";
+}
