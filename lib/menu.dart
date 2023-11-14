@@ -135,7 +135,7 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                     child: Text(
-                      "Selamat Datang di Daftar Ranking Mahasiswa Berprestasi Politeknik Negeri Malang",
+                      "Selamat Datang di Daftar Ranking ASD Mahasiswa Berprestasi Politeknik Negeri Malang",
                       textAlign: TextAlign.left,
                       style: GoogleFonts.roboto(
                         fontWeight: FontWeight.w700,
