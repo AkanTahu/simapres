@@ -135,7 +135,7 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                     child: Text(
-                      "Selamat Datang di Daftar Ranking ASD Mahasiswa Berprestasi Politeknik Negeri Malang",
+                      "Selamat Datang di Daftar Ranking Mahasiswa Berprestasi Politeknik Negeri Malang",
                       textAlign: TextAlign.left,
                       style: GoogleFonts.roboto(
                         fontWeight: FontWeight.w700,
@@ -201,12 +201,12 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
                         ],
                         rows: [
                           for (var data in top5Data)
-                          DataRow(cells: [
-                            DataCell(Text('1')),
-                            DataCell(Text(data['nama'])),
-                            DataCell(Text(data['prodi'])),
-                            DataCell(Text(data['jurusan'])),
-                          ]),
+                            DataRow(cells: [
+                              DataCell(Text('1')),
+                              DataCell(Text(data['nama'])),
+                              DataCell(Text(data['prodi'])),
+                              DataCell(Text(data['jurusan'])),
+                            ]),
                         ],
                       ),
                     ],
@@ -308,7 +308,8 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const RegisterAkunMhs()),
+                    MaterialPageRoute(
+                        builder: (context) => const RegisterAkunMhs()),
                   );
                 },
                 blurRadius: 10,
