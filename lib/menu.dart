@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 import 'package:dio/dio.dart';
 import 'rangkingSaya.dart';
-import './admin/login.dart';
 import 'daftarJurusan.dart';
-import 'inputSertifikat.dart';
+import 'login.dart';
 import 'registerMhsSertif.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'package:button_animations/button_animations.dart';
@@ -285,7 +284,7 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const inputSertifikat()),
+                        builder: (context) => Login()),
                   );
                 },
                 blurRadius: 10,
