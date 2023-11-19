@@ -6,14 +6,9 @@ import 'package:intl/intl.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'menu.dart';
 import 'registerMhsSertif.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-TextEditingController inputEmail = new TextEditingController();
-TextEditingController inputPass = new TextEditingController();
 TextEditingController dateinput = TextEditingController();
-
-TextEditingController inputUser = new TextEditingController();
-TextEditingController inputNIMmhs = new TextEditingController();
-TextEditingController inputPassRegMhs = new TextEditingController();
 
 const List<String> list = <String>[
   'Kota',
@@ -22,116 +17,8 @@ const List<String> list = <String>[
   'Internasional'
 ];
 
-
-class inputSertifikat extends StatefulWidget {
-  const inputSertifikat ({Key? key}) : super(key: key);
-
-  @override
-  inputSertifikatState createState() => inputSertifikatState();
-}
-
-class inputSertifikatState extends State<inputSertifikat > {
-
-  @override
-  Widget build(BuildContext context) {
-
-    var routes = <String, WidgetBuilder>{
-      nextInput.routeName: (BuildContext context) => new nextInput(),
-    };
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("SIMAPRES"),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(13),
-            child: TextField(
-              controller: inputEmail,
-              decoration: InputDecoration(
-                labelText: "Username",
-                prefixIcon: Icon(Icons.people),
-                border: myinputborder(),
-                enabledBorder: myinputborder(),
-                focusedBorder: myfocusborder(),
-              ), // Only numbers can be entered
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(13),
-            child: TextField(
-              controller: inputPass,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock),
-                labelText: "Password",
-                enabledBorder: myinputborder(),
-                focusedBorder: myfocusborder(),
-              ), // Only numbers can be entered
-            ),
-          ),
-          PrettyNeumorphicButton(
-            label: 'Submit',
-            onPressed: (){Navigator.pushNamed(context, nextInput.routeName);},
-          ),
-          // Padding(
-          //   padding: const EdgeInsets.all(15.0),
-          //   child: PrettyNeumorphicButton(
-          //     label: 'Forgot Password',
-          //     onPressed: () {
-          //       Navigator.push(
-          //         context,
-          //         MaterialPageRoute(builder: (context) => const LupaPass()),
-          //       );
-          //     },
-          //   ),
-          // ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: PrettyNeumorphicButton(
-              label: 'Register Akun Mahasiswa',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RegisterAkunMhs()),
-                );
-              },
-            ),
-          )
-        ],
-      ),
-
-      // Display the contents from the CSV file
-    );
-    
-  }
-
-  OutlineInputBorder myinputborder() {
-    //return type is OutlineInputBorder
-    return OutlineInputBorder(
-        //Outline border type for TextFeild
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        borderSide: BorderSide(
-          color: Colors.redAccent,
-          width: 3,
-        ));
-  }
-
-  OutlineInputBorder myfocusborder() {
-    return OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        borderSide: BorderSide(
-          color: Colors.greenAccent,
-          width: 3,
-        ));
-  }
-}
-
 class nextInput extends StatefulWidget {
   const nextInput({Key? key}) : super(key: key);
-
-  static const String routeName = "/nextInput";
 
   @override
   _nextInputState createState() => _nextInputState();
@@ -211,117 +98,177 @@ class _nextInputState extends State<nextInput> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Input Berkas Sertifikat'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(13),
-            child: TextField(
-              controller: inputEmail,
-              decoration: InputDecoration(
-                labelText: "Input Nama Event / Kejuaraan / Prestasi",
-                prefixIcon: Icon(Icons.task),
-                border: myinputborder(),
-                enabledBorder: myinputborder(),
-                focusedBorder: myfocusborder(),
-              ), // Only numbers can be entered
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/bg.png"),
+            fit: BoxFit.cover,
           ),
-          PrettyWaveButton(
-            child: const Text(
-              'Upload Foto Sertifikat',
-              style: TextStyle(
-                color: Colors.white,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            new Center(
+              child: Image(
+                image: AssetImage('assets/SIMAPRESputih.png'),
+                height: 200,
+                width: 200,
               ),
             ),
-            onPressed: () {
-              myAlert();
-            },
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          //if image not null show the image
-          //if image null show text
-          image != null
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.file(
-                      //to show image, you type like this.
-                      File(image!.path),
-                      fit: BoxFit.cover,
-                      width: MediaQuery.of(context).size.width,
-                      height: 300,
+            Container(
+              width: 420,
+              height: 420,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.3),
+                  width: 2.0,
+                  style: BorderStyle.solid,
+                ),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10.0),
+                  topRight: Radius.circular(10.0),
+                  bottomLeft: Radius.circular(10.0),
+                  bottomRight: Radius.circular(10.0),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromARGB(255, 86, 91, 94)!,
+                    offset: const Offset(
+                      5.0,
+                      5.0,
+                    ),
+                    blurRadius: 10.0,
+                    spreadRadius: 2.0,
+                  ),
+                  //BoxShadow
+                  BoxShadow(
+                    color: Colors.white,
+                    offset: const Offset(0.0, 0.0),
+                    blurRadius: 0.0,
+                    spreadRadius: 0.0,
+                  ), //BoxShadow
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    'UPLOAD SERTIFIKAT',
+                    style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w700, fontSize: 30),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: TextField(
+                      // controller: inputEmail,
+                      decoration: InputDecoration(
+                        labelText: "Input Nama Event / Kejuaraan / Prestasi",
+                        prefixIcon: Icon(Icons.task),
+                        border: myinputborder(),
+                        enabledBorder: myinputborder(),
+                        focusedBorder: myfocusborder(),
+                      ), // Only numbers can be entered
                     ),
                   ),
-                )
-              : Text(
-                  "Tidak Ada Gambar",
-                  style: TextStyle(fontSize: 20),
-                ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Pilih Tingkat Sertifikat : ',
-                style: TextStyle(fontSize: 20),
-              ),
-              DropdownButtonExample(),
-            ],
-          ),
-          Container(
-              height: 80,
-              child: Center(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: dateinput, //editing controller of this TextField
-                  decoration: InputDecoration(
-                    labelText: "Pilih Tanggal Event / Kejuaraan / Prestasi",
-                    prefixIcon: Icon(Icons.calendar_today),
-                    border: myinputborder(),
-                    enabledBorder: myinputborder(),
-                    focusedBorder: myfocusborder(), //label text of field
+                  PrettyWaveButton(
+                    child: const Text(
+                      'Upload Foto Sertifikat',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {
+                      myAlert();
+                    },
                   ),
-                  readOnly:
-                      true, //set it true, so that user will not able to edit text
-                  onTap: () async {
-                    DateTime? pickedDate = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(
-                            2000), //DateTime.now() - not to allow to choose before today.
-                        lastDate: DateTime(2101));
+                  SizedBox(
+                    height: 10,
+                  ),
+                  //if image not null show the image
+                  //if image null show text
+                  image != null
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.file(
+                              //to show image, you type like this.
+                              File(image!.path),
+                              fit: BoxFit.cover,
+                              width: MediaQuery.of(context).size.width,
+                              height: 300,
+                            ),
+                          ),
+                        )
+                      : Text(
+                          "Tidak Ada Gambar",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Pilih Tingkat Sertifikat : ',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      DropdownButtonExample(),
+                    ],
+                  ),
+                  Container(
+                      height: 80,
+                      child: Center(
+                          child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextField(
+                          controller:
+                              dateinput, //editing controller of this TextField
+                          decoration: InputDecoration(
+                            labelText:
+                                "Pilih Tanggal Event / Kejuaraan / Prestasi",
+                            prefixIcon: Icon(Icons.calendar_today),
+                            border: myinputborder(),
+                            enabledBorder: myinputborder(),
+                            focusedBorder:
+                                myfocusborder(), //label text of field
+                          ),
+                          readOnly:
+                              true, //set it true, so that user will not able to edit text
+                          onTap: () async {
+                            DateTime? pickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(
+                                    2000), //DateTime.now() - not to allow to choose before today.
+                                lastDate: DateTime(2101));
 
-                    if (pickedDate != null) {
-                      print(
-                          pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                      String formattedDate =
-                          DateFormat('yyyy-MM-dd').format(pickedDate);
-                      print(
-                          formattedDate); //formatted date output using intl package =>  2021-03-16
-                      //you can implement different kind of Date Format here according to your requirement
+                            if (pickedDate != null) {
+                              print(
+                                  pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                              String formattedDate =
+                                  DateFormat('yyyy-MM-dd').format(pickedDate);
+                              print(
+                                  formattedDate); //formatted date output using intl package =>  2021-03-16
+                              //you can implement different kind of Date Format here according to your requirement
 
-                      setState(() {
-                        dateinput.text =
-                            formattedDate; //set output date to TextField value.
-                      });
-                    } else {
-                      print("Date is not selected");
-                    }
-                  },
-                ),
-              ))),
-          PrettyNeumorphicButton(
-            label: 'Submit',
-            onPressed: () {},
-          ),
-        ],
+                              setState(() {
+                                dateinput.text =
+                                    formattedDate; //set output date to TextField value.
+                              });
+                            } else {
+                              print("Date is not selected");
+                            }
+                          },
+                        ),
+                      ))),
+                  PrettyNeumorphicButton(
+                    label: 'Submit',
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ) /* add child content here */,
       ),
     );
   }
@@ -407,4 +354,3 @@ class LupaPass extends StatelessWidget {
     );
   }
 }
-

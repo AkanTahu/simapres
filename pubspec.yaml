@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   dio: ^5.3.2
-  image_picker:
+  image_picker: ^1.0.4   
   intl: ^0.17.0
   pretty_animated_buttons: ^0.0.1
   dropdown_button2: ^2.3.8
