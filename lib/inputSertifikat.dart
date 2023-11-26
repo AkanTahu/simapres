@@ -10,7 +10,7 @@ import 'registerMhsSertif.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 TextEditingController dateinput = TextEditingController();
-// TextEditingController inputjuara = new TextEditingController();
+TextEditingController inputjuara = new TextEditingController();
 TextEditingController inputtingkat = new TextEditingController();
 TextEditingController inputnamaSertif = new TextEditingController();
 
@@ -233,7 +233,7 @@ class _nextInputState extends State<nextInput> {
                           'Pilih Juara Berapa : ',
                           style: TextStyle(fontSize: 20),
                         ),
-                        // DropdownButtonJuara(),
+                        DropdownButtonJuara(),
                       ],
                     ),
                     Container(
@@ -285,7 +285,7 @@ class _nextInputState extends State<nextInput> {
                     PrettyNeumorphicButton(
                       label: 'Submit',
                       onPressed: () {
-                        buatSertif( inputnamaSertif.text,inputtingkat.text,dateinput.text);
+                        buatSertif( inputnamaSertif.text,inputtingkat.text,inputjuara.text,dateinput.text);
                       },
                     ),
                   ],
@@ -327,12 +327,12 @@ class DropdownButtonTingkat extends StatefulWidget {
 }
 
 class _DropdownButtonTingkatState extends State<DropdownButtonTingkat> {
-  String dropdownValue = list.first;
+  String dropdownValue1 = list.first;
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      value: dropdownValue,
+      value: dropdownValue1,
       icon: const Icon(Icons.arrow_downward),
       elevation: 20,
       style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
@@ -344,7 +344,7 @@ class _DropdownButtonTingkatState extends State<DropdownButtonTingkat> {
         // This is called when the user selects an item.
         inputtingkat.text = value!;
         setState(() {
-          dropdownValue = value!;
+          dropdownValue1 = value!;
           
         });
       },
@@ -361,57 +361,58 @@ class _DropdownButtonTingkatState extends State<DropdownButtonTingkat> {
   }
 }
 
-// class DropdownButtonJuara extends StatefulWidget {
-//   const DropdownButtonJuara({super.key});
+class DropdownButtonJuara extends StatefulWidget {
+  const DropdownButtonJuara({super.key});
 
-//   @override
-//   State<DropdownButtonJuara> createState() => _DropdownButtonJuaraState();
-// }
+  @override
+  State<DropdownButtonJuara> createState() => _DropdownButtonJuaraState();
+}
 
-// class _DropdownButtonJuaraState extends State<DropdownButtonJuara> {
-//   String dropdownValue = listJuara.first;
+class _DropdownButtonJuaraState extends State<DropdownButtonJuara> {
+  String dropdownValue2 = listJuara.first;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return DropdownButton<String>(
-//       value: dropdownValue,
-//       icon: const Icon(Icons.arrow_downward),
-//       elevation: 20,
-//       style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-//       underline: Container(
-//         height: 3,
-//         color: Color.fromARGB(255, 255, 0, 0),
-//       ),
-//       onChanged: (String? value) {
-//         // This is called when the user selects an item.
-//         setState(() {
-//           dropdownValue = value!;
-//           inputjuara.text = dropdownValue;
-//         });
-//       },
-//       items: list.map<DropdownMenuItem<String>>((String value) {
-//         return DropdownMenuItem<String>(
-//           value: value,
-//           child: Text(
-//             value,
-//             style: TextStyle(fontSize: 20),
-//           ),
-//         );
-//       }).toList(),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: dropdownValue2,
+      icon: const Icon(Icons.arrow_downward),
+      elevation: 20,
+      style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+      underline: Container(
+        height: 3,
+        color: Color.fromARGB(255, 255, 0, 0),
+      ),
+      onChanged: (String? value) {
+        // This is called when the user selects an item.
+        inputjuara.text = value!;
+        setState(() {
+          dropdownValue2 = value!;
+          
+        });
+      },
+      items: listJuara.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(
+            value,
+            style: TextStyle(fontSize: 20),
+          ),
+        );
+      }).toList(),
+    );
+  }
+}
 
-void buatSertif(String namaSertif, String tingkatSertif, String tanggalSertif) async {
+void buatSertif(String namaSertif, String tingkatSertif, String juaraSertif,String tanggalSertif) async {
   Response response;
   response = await dio.post(
     url_buatSertif,
-    queryParameters: {'namaSertif': namaSertif, 'tingkatSertif': tingkatSertif, 'tanggalSertif': tanggalSertif},
+    queryParameters: {'namaSertif': namaSertif, 'tingkatSertif': tingkatSertif, 'juaraSertif': juaraSertif,'tanggalSertif': tanggalSertif},
   );
 
   inputnamaSertif.text = "";
   inputtingkat.text = "";
-  // inputjuara.text = "";
+  inputjuara.text = "";
   dateinput.text = "";
 }
 
