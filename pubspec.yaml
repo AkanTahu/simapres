@@ -18,6 +18,8 @@ dependencies:
   dropdown_button2: ^2.3.8
   google_fonts: ^6.1.0
   button_animations: ^2.0.0+3
+  dropdown_search: ^5.0.6
+  curl_logger_dio_interceptor: ^1.0.0
 
 dev_dependencies:
   flutter_test:

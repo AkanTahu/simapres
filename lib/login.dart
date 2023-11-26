@@ -11,8 +11,9 @@ TextEditingController inputUser = new TextEditingController();
 TextEditingController inputPass = new TextEditingController();
 
 final dio = Dio();
+// String url_domain = "http://192.168.0.105:8080/";
 String url_domain = "http://127.0.0.1:8000/";
-String url_login_mhs = url_domain + "api/login_mhs";
+String url_login_mhs = url_domain + "api/loginmhs";
 
 class Login extends StatelessWidget {
   @override
@@ -26,17 +27,20 @@ class Login extends StatelessWidget {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          // mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             new Center(
-              child: Image(
-                image: AssetImage('assets/SIMAPRESputih.png'),
-                height: 200,
-                width: 200,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),
+                child: Image(
+                  image: AssetImage('assets/SIMAPRESputih.png'),
+                  height: 200,
+                  width: 200,
+                ),
               ),
             ),
             Container(
-              width: 420,
+              width: 320,
               height: 350,
               decoration: BoxDecoration(
                 border: Border.all(
@@ -73,10 +77,10 @@ class Login extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                        'LOGIN',
-                        style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w700, fontSize: 30),
-                      ),
+                    'LOGIN',
+                    style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w700, fontSize: 30),
+                  ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                     child: TextField(
@@ -106,12 +110,13 @@ class Login extends StatelessWidget {
                   PrettyNeumorphicButton(
                     label: 'Submit',
                     onPressed: () {
-                      login(inputUser.text,  inputPass.text);
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const nextInput()),
-                  );},
+                      loginmhs(inputUser.text, inputPass.text);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const nextInput()),
+                      );
+                    },
                   )
                 ],
               ),
@@ -143,7 +148,7 @@ class Login extends StatelessWidget {
   }
 }
 
-void login(String username, String password) async {
+void loginmhs(String username, String password) async {
   Response response;
   response = await dio.post(
     url_login_mhs,

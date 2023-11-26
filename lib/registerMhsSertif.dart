@@ -12,6 +12,7 @@ TextEditingController inputNIMmhs = new TextEditingController();
 TextEditingController inputPass = new TextEditingController();
 
 final dio = Dio();
+// String url_domain = "http://192.168.0.105:8080/";
 String url_domain = "http://127.0.0.1:8000/";
 String url_create_data = url_domain + "api/create_data";
 String url_updateAkun = url_domain + "api/updateAkun";
