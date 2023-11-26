@@ -8,6 +8,7 @@ import 'package:dio/dio.dart';
 import 'menu.dart';
 import 'registerMhsSertif.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 TextEditingController dateinput = TextEditingController();
 TextEditingController inputjuara = new TextEditingController();
@@ -284,9 +285,7 @@ class _nextInputState extends State<nextInput> {
                         ))),
                     PrettyNeumorphicButton(
                       label: 'Submit',
-                      onPressed: () {
-                        buatSertif( inputnamaSertif.text,inputtingkat.text,inputjuara.text,dateinput.text);
-                      },
+                      onPressed: () => sweatAlert(context),
                     ),
                   ],
                 ),
@@ -414,5 +413,32 @@ void buatSertif(String namaSertif, String tingkatSertif, String juaraSertif,Stri
   inputtingkat.text = "";
   inputjuara.text = "";
   dateinput.text = "";
+}
+
+void sweatAlert(BuildContext context) {
+  Alert(
+    context: context,
+    type: AlertType.success,
+    title: "Sertifikat Anda Sudah Terupload",
+    desc: "Mohon Cek Notifikasi Apabila Admin Sudah Memvalidasi Sertifikat Anda",
+    buttons: [
+      DialogButton(
+        child: Text(
+          "Selanjutnya",
+          style: TextStyle(color: Colors.white, fontSize: 14),
+        ),
+        onPressed: () {
+                        buatSertif( inputnamaSertif.text,inputtingkat.text,inputjuara.text,dateinput.text);
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const  MyAppMenu()),
+                      );
+                      },
+      )
+    ],
+  ).show();
+
+  return;
 }
 

@@ -5,6 +5,7 @@ import 'rangkingSaya.dart';
 import 'daftarJurusan.dart';
 import 'login.dart';
 import 'registerMhsSertif.dart';
+import 'loginNotif.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'package:button_animations/button_animations.dart';
 import 'package:button_animations/constants.dart';
@@ -87,11 +88,18 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 40, 20, 0),
-                  child: Icon(
-                    Icons.notifications_none,
+                  child: IconButton(
+                    icon: const Icon(Icons.notification_add_outlined, size: 40,),
                     color: Colors.black,
-                    size: 40,
+                    onPressed: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LoginNotif()),
+                    );
+                    },
                   ),
+                  
                 ),
               ],
             ),
@@ -151,7 +159,7 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
               child: Container(
-                width: 320,
+                width: 420,
                 height: 350,
                 decoration: BoxDecoration(
                   border: Border.all(

@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:simapres/tesbackend.dart';
 import 'main.dart';
+import 'menu.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:dio/dio.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+
 
 TextEditingController inputUser = new TextEditingController();
 TextEditingController inputNIMmhs = new TextEditingController();
@@ -95,9 +98,7 @@ class _RegisterAkunMhsState extends State<RegisterAkunMhs> {
           ),
           PrettyNeumorphicButton(
             label: 'Submit',
-            onPressed: () {
-              updateAkun(inputUser.text, inputNIMmhs.text, inputPass.text);
-            },
+            onPressed: () => sweatAlert(context),
           ),
         ],
       ),
@@ -136,4 +137,31 @@ void updateAkun(String username, String nim, String password) async {
   inputUser.text = "";
   inputNIMmhs.text = "";
   inputPass.text = "";
+}
+
+void sweatAlert(BuildContext context) {
+  Alert(
+    context: context,
+    type: AlertType.success,
+    title: "Daftar Akun berhasil",
+    desc: "Selamat anda berhasil Daftar Akun",
+    buttons: [
+      DialogButton(
+        child: Text(
+          "Selanjutnya",
+          style: TextStyle(color: Colors.white, fontSize: 14),
+        ),
+        onPressed: () {
+              updateAkun(inputUser.text, inputNIMmhs.text, inputPass.text);
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const  MyAppMenu()),
+                      );
+            },
+      )
+    ],
+  ).show();
+
+  return;
 }

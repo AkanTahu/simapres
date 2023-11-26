@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'notifikasi.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'package:button_animations/button_animations.dart';
 import 'package:button_animations/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'inputSertifikat.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+
 
 TextEditingController inputUser = new TextEditingController();
 TextEditingController inputPass = new TextEditingController();
@@ -14,9 +15,9 @@ TextEditingController inputPass = new TextEditingController();
 final dio = Dio();
 // String url_domain = "http://192.168.0.105:8080/";
 String url_domain = "http://127.0.0.1:8000/";
-String url_login_mhs = url_domain + "api/loginmhs";
+String url_login_mhs = url_domain + "api/loginNotif";
 
-class Login extends StatelessWidget {
+class LoginNotif extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,7 +143,7 @@ class Login extends StatelessWidget {
   }
 }
 
-void loginmhs(String username, String password) async {
+void loginNotif(String username, String password) async {
   Response response;
   response = await dio.post(
     url_login_mhs,
@@ -166,12 +167,12 @@ void sweatAlert(BuildContext context) {
           style: TextStyle(color: Colors.white, fontSize: 14),
         ),
         onPressed: () {
-                      loginmhs(inputUser.text, inputPass.text);
+                      loginNotif(inputUser.text, inputPass.text);
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const nextInput()),
-                      );
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Notifikasi()),
+                    );
                     },
       )
     ],
