@@ -22,6 +22,7 @@ String url_buatSertif = url_domain + "api/buatSertif";
 
 
 const List<String> list = <String>[
+  'Pilih Tingkat',
   'Kota',
   'Provinsi',
   'Nasional',
@@ -29,6 +30,7 @@ const List<String> list = <String>[
 ];
 
 const List<String> listJuara = <String>[
+  'Pilih Juara',
   '1',
   '2',
   '3'
