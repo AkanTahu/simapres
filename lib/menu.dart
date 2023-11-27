@@ -5,6 +5,7 @@ import 'rangkingSaya.dart';
 import 'daftarJurusan.dart';
 import 'login.dart';
 import 'registerMhsSertif.dart';
+import 'loginNotif.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'package:button_animations/button_animations.dart';
 import 'package:button_animations/constants.dart';
@@ -13,6 +14,7 @@ import 'package:google_fonts/google_fonts.dart';
 final dio = Dio();
 var all_data = [];
 var top5Data = [];
+// String url_domain = "http://192.168.0.105:8080/";
 String url_domain = "http://127.0.0.1:8000/";
 String url_all_data = url_domain + "api/all_data";
 String url_top5 = url_domain + "api/top5_data";
@@ -77,20 +79,27 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 0, 10),
+                  padding: const EdgeInsets.fromLTRB(20, 50, 0, 10),
                   child: Text(
                     'SIMAPRES POLINEMA',
                     style: GoogleFonts.inter(
-                        fontWeight: FontWeight.w700, fontSize: 30),
+                        fontWeight: FontWeight.w700, fontSize: 15),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 10, 20, 0),
-                  child: Icon(
-                    Icons.notifications_none,
+                  padding: const EdgeInsets.fromLTRB(0, 40, 20, 0),
+                  child: IconButton(
+                    icon: const Icon(Icons.notification_add_outlined, size: 40,),
                     color: Colors.black,
-                    size: 40,
+                    onPressed: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LoginNotif()),
+                    );
+                    },
                   ),
+                  
                 ),
               ],
             ),
@@ -139,7 +148,7 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
                       style: GoogleFonts.roboto(
                         fontWeight: FontWeight.w700,
                         color: Colors.black,
-                        fontSize: 23,
+                        fontSize: 18,
                       ),
                     ),
                   ),
@@ -150,7 +159,7 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
               child: Container(
-                width: 520,
+                width: 420,
                 height: 350,
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -189,7 +198,7 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
                       Text(
                         'RANK SEPOLINEMA',
                         style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w700, fontSize: 30),
+                            fontWeight: FontWeight.w700, fontSize: 20),
                       ),
                       DataTable(
                         columns: [
@@ -331,7 +340,7 @@ void show_all_data() async {
   all_data = response.data;
 }
 
-void showtop5() async {
+void showtop5() async { 
   Response response;
   response = await dio.post(
     url_top5,
