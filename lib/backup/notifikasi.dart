@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import '../main.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'package:button_animations/button_animations.dart';
@@ -107,13 +107,3 @@ class Notifikasi extends StatelessWidget {
   }
 }
 
-void loginNotif(String username, String password) async {
-  Response response;
-  response = await dio.post(
-    url_login_mhs,
-    queryParameters: {'username': username, 'password': password},
-  );
-
-  // inputUser.text = "";
-  // inputPass.text = "";
-}

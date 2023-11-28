@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
-import 'notifikasi.dart';
+import 'backup/notifikasi.dart';
+import 'rangkingSaya.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'package:button_animations/button_animations.dart';
@@ -12,10 +13,11 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 TextEditingController inputUser = new TextEditingController();
 TextEditingController inputPass = new TextEditingController();
 
+var datanotif = [];
 final dio = Dio();
 // String url_domain = "http://192.168.0.105:8080/";
 String url_domain = "http://127.0.0.1:8000/";
-String url_login_mhs = url_domain + "api/loginNotif";
+String url_login_mhs = url_domain + "api/loginNotifikasi";
 
 class LoginNotif extends StatelessWidget {
   @override
@@ -112,7 +114,7 @@ class LoginNotif extends StatelessWidget {
                   PrettyNeumorphicButton(
                     label: 'Submit',
                     onPressed: () => sweatAlert(context),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -152,6 +154,7 @@ void loginNotif(String username, String password) async {
 
   inputUser.text = "";
   inputPass.text = "";
+  datanotif = response.data;
 }
 
 void sweatAlert(BuildContext context) {
@@ -171,7 +174,7 @@ void sweatAlert(BuildContext context) {
                       Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Notifikasi()),
+                          builder: (context) => LoginNotif()),
                     );
                     },
       )

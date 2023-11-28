@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simapres/rangkingPerJurusan.dart';
 import 'main.dart';
 import 'package:dio/dio.dart';
 import 'rangkingSaya.dart';
@@ -14,14 +15,15 @@ import 'package:google_fonts/google_fonts.dart';
 final dio = Dio();
 var all_data = [];
 var top5Data = [];
+
 // String url_domain = "http://192.168.0.105:8080/";
 String url_domain = "http://127.0.0.1:8000/";
-String url_all_data = url_domain + "api/all_data";
+// String url_all_data = url_domain + "api/all_data";
 String url_top5 = url_domain + "api/top5_data";
-String url_create_data = url_domain + "api/create_data";
-String url_show_data = url_domain + "api/show_data";
-String url_update_data = url_domain + "api/edit_data";
-String url_delete_data = url_domain + "api/delete_data";
+// String url_create_data = url_domain + "api/create_data";
+// String url_show_data = url_domain + "api/show_data";
+// String url_update_data = url_domain + "api/edit_data";
+// String url_delete_data = url_domain + "api/delete_data";
 
 class MyAppMenu extends StatelessWidget {
   const MyAppMenu({super.key});
@@ -210,10 +212,10 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
                         rows: [
                           for (var data in top5Data)
                             DataRow(cells: [
-                              DataCell(Text('1')),
-                              DataCell(Text(data['nama'])),
-                              DataCell(Text(data['prodi'])),
-                              DataCell(Text(data['jurusan'])),
+                              DataCell(Text(data['id_peringkat'].toString())),
+                              DataCell(Text(data['namamhs'])),
+                              DataCell(Text(data['prodimhs'])),
+                              DataCell(Text(data['jurusanmhs'])),
                             ]),
                         ],
                       ),
@@ -269,7 +271,7 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RankingJurusan()),
+                    MaterialPageRoute(builder: (context) => DaftarRanking()),
                   );
                 },
                 blurRadius: 10,
@@ -332,13 +334,13 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
   }
 }
 
-void show_all_data() async {
-  Response response;
-  response = await dio.post(
-    url_all_data,
-  );
-  all_data = response.data;
-}
+// void show_all_data() async {
+//   Response response;
+//   response = await dio.post(
+//     url_all_data,
+//   );
+//   all_data = response.data;
+// }
 
 void showtop5() async { 
   Response response;
