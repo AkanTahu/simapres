@@ -4,8 +4,6 @@ import 'package:flutter/services.dart';
 import 'menu.dart';
 import 'inputSertifikat.dart';
 
-
-
 void main() {
   runApp(const MyApp());
 }
@@ -15,13 +13,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
-      title: 'SIMAPRES',
-      // Set Raleway as the default app font.
-      home: const MyAppMenu(),
-      debugShowCheckedModeBanner: false
-    );
-  } 
+        title: 'SIMAPRES',
+        // Set Raleway as the default app font.
+        home: const MyAppMenu(),
+        debugShowCheckedModeBanner: false);
+  }
 }
-
