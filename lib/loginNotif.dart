@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
-import 'backup/notifikasi.dart';
+import 'notif.dart';
 import 'rangkingSaya.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
@@ -154,7 +154,7 @@ void loginNotif(String username, String password) async {
 
   inputUser.text = "";
   inputPass.text = "";
-  datanotif = response.data;
+  // datanotif = response.data;
 }
 
 void sweatAlert(BuildContext context) {
@@ -174,7 +174,7 @@ void sweatAlert(BuildContext context) {
                       Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => LoginNotif()),
+                          builder: (context) => Notifikasi()),
                     );
                     },
       )
