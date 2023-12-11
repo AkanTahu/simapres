@@ -1,35 +1,83 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:simapres/admin/inputDataMhs.dart';
-import 'package:simapres/main.dart';
-import 'rangkingPerJurusan.dart';
+import 'package:flutter/services.dart';
+import 'package:simapres/backup/tesbackend.dart';
+import 'package:simapres/rangkingPerJurusan.dart';
+import 'main.dart';
+import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:dio/dio.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
-// import 'RankJurusan.dart';
+final dio = Dio();
+TextEditingController inputtingkat = new TextEditingController();
+// String url_domain = "http://192.168.0.105:8080/";
+String url_domain = "http://127.0.0.1:8000/";
+String url_pilihJus = url_domain + "api/pilihJus";
 
-// void main() {
-//   runApp(MaterialApp(
-//     home: daftarJurusan(),
-//   ));
-// }
-
-class daftarJurusan extends StatefulWidget {
-  _daftarJurusanState createState() => _daftarJurusanState();
+class MyAppMenu extends StatelessWidget {
+  const MyAppMenu({super.key});
+// This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'SIMAPRES',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: DaftarJurusan(),
+    );
+  }
 }
 
-class _daftarJurusanState extends State<daftarJurusan> {
+class DaftarJurusan extends StatefulWidget {
+  const DaftarJurusan({Key? key}) : super(key: key);
+
+  @override
+  _DaftarJurusanState createState() => _DaftarJurusanState();
+}
+
+class _DaftarJurusanState extends State<DaftarJurusan> with WidgetsBindingObserver {
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
   String? selectedValue;
   Widget build(BuildContext context) {
     return Scaffold(
-      // home: Scaffold(
-      backgroundColor: Color.fromARGB(197, 98, 202, 195),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Yuk, pilih jurusanmu sekarang!!",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
-            //Dropdown
-            Container(
-              margin: EdgeInsets.only(left: 50, top: 50, right: 50, bottom: 50),
+      body: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            height: 180.0,
+            // width: 300.0,
+            color: Colors.transparent,
+            child: Container(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 1, 159, 151),
+                  borderRadius: BorderRadius.vertical(
+                    bottom: Radius.circular(50),
+                  ),
+                ),
+                child: new Center(
+                    child:
+                        Image(image: AssetImage('assets/SIMAPRESputih.png')))),
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: Text(
+                'Pilih Jurusan',
+                style: GoogleFonts.inter(
+                    fontWeight: FontWeight.w700, fontSize: 30),
+              ),
+            ),
+          ),
+          Container(
+              margin: EdgeInsets.only(left: 50, top: 20, right: 50, bottom: 20),
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               decoration: BoxDecoration(
                   color: Colors.grey.shade200,
@@ -38,6 +86,7 @@ class _daftarJurusanState extends State<daftarJurusan> {
                   hint: Text("Pilih Jurusan"),
                   value: selectedValue,
                   onChanged: (value) {
+                    inputtingkat.text = value!;
                     setState(() {
                       selectedValue = value;
                     });
@@ -59,39 +108,30 @@ class _daftarJurusanState extends State<daftarJurusan> {
                           ))
                       .toList()),
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                shadowColor: Colors.indigo,
-                elevation: 10,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DaftarRanking()),
-                );
-              },
-              child: const Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      "SUBMIT",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16.0),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+            PrettyNeumorphicButton(
+                    label: 'Submit',
+                    onPressed: () => {
+                      pilihJus(inputtingkat.text),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>  DaftarRanking()),
+                      )
+                    },
+                  ),
+        ],
       ),
-      // ),
+
+      // Display the contents from the CSV file
     );
   }
+}
+
+void pilihJus(String jurusanmhs) async {
+  Response response;
+  response = await dio.post(
+    url_pilihJus,
+    queryParameters: {'jurusanmhs': jurusanmhs},
+  );
+  inputtingkat.text = "";
 }

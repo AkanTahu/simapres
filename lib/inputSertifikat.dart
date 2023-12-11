@@ -9,6 +9,7 @@ import 'menu.dart';
 import 'registerMhsSertif.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:file_picker/file_picker.dart';
 
 TextEditingController dateinput = TextEditingController();
 TextEditingController inputjuara = new TextEditingController();
@@ -190,40 +191,40 @@ class _nextInputState extends State<nextInput> {
                         ), // Only numbers can be entered
                       ),
                     ),
-                    // PrettyWaveButton(
-                    //   child: const Text(
-                    //     'Upload Foto Sertifikat',
-                    //     style: TextStyle(
-                    //       color: Colors.white,
-                    //     ),
-                    //   ),
-                    //   onPressed: () {
-                    //     myAlert();
-                    //   },
-                    // ),
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
-                    // //if image not null show the image
-                    // //if image null show text
-                    // image != null
-                    //     ? Padding(
-                    //         padding: const EdgeInsets.symmetric(horizontal: 20),
-                    //         child: ClipRRect(
-                    //           borderRadius: BorderRadius.circular(8),
-                    //           child: Image.file(
-                    //             //to show image, you type like this.
-                    //             File(image!.path),
-                    //             fit: BoxFit.cover,
-                    //             width: MediaQuery.of(context).size.width,
-                    //             height: 200,
-                    //           ),
-                    //         ),
-                    //       )
-                    //     : Text(
-                    //         "Tidak Ada Gambar",
-                    //         style: TextStyle(fontSize: 20),
-                    //       ),
+                    PrettyWaveButton(
+                      child: const Text(
+                        'Upload Foto Sertifikat',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      onPressed: () {
+                        myAlert();
+                      },
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    //if image not null show the image
+                    //if image null show text
+                    image != null
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.file(
+                                //to show image, you type like this.
+                                File(image!.path),
+                                fit: BoxFit.cover,
+                                width: MediaQuery.of(context).size.width,
+                                height: 200,
+                              ),
+                            ),
+                          )
+                        : Text(
+                            "Tidak Ada Gambar",
+                            style: TextStyle(fontSize: 20),
+                          ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

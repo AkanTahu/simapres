@@ -271,7 +271,7 @@ class _data_tesState extends State<data_tes> with WidgetsBindingObserver {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DaftarRanking()),
+                    MaterialPageRoute(builder: (context) => DaftarJurusan()),
                   );
                 },
                 blurRadius: 10,
