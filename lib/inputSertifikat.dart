@@ -206,25 +206,6 @@ class _nextInputState extends State<nextInput> {
                       height: 10,
                     ),
                     //if image not null show the image
-                    //if image null show text
-                    image != null
-                        ? Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.file(
-                                //to show image, you type like this.
-                                File(image!.path),
-                                fit: BoxFit.cover,
-                                width: MediaQuery.of(context).size.width,
-                                height: 200,
-                              ),
-                            ),
-                          )
-                        : Text(
-                            "Tidak Ada Gambar",
-                            style: TextStyle(fontSize: 20),
-                          ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
