@@ -92,27 +92,27 @@ class _DetailPageState extends State<DetailPage> with WidgetsBindingObserver {
               Text(
                 "Tahun Masuk = " + datas['tahunMasuk'].toString(),
                 style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w500, fontSize: 10),
+                    fontWeight: FontWeight.w500, fontSize: 15),
               ),
               Text(
                 "Jurusan = " + datas['jurusan'],
                 style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w500, fontSize: 10),
+                    fontWeight: FontWeight.w500, fontSize: 15),
               ),
               Text(
                 "Progam Studi = " + datas['prodi'],
                 style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w500, fontSize: 10),
+                    fontWeight: FontWeight.w500, fontSize: 15),
               ),
               Text(
                 "IPK = " + datas['ipkORI'],
                 style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w500, fontSize: 10),
+                    fontWeight: FontWeight.w500, fontSize: 15),
               ),
               Text(
                 "Alpha = " + datas['alphaORI'].toString() + ' hari',
                 style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w500, fontSize: 10),
+                    fontWeight: FontWeight.w500, fontSize: 15),
               ),
               Text(
                 "RANGKING SE-POLINEMA",
@@ -127,17 +127,17 @@ class _DetailPageState extends State<DetailPage> with WidgetsBindingObserver {
               Text(
                 "SERTIFIKAT",
                 style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w500, fontSize: 10),
+                    fontWeight: FontWeight.w500, fontSize: 15),
               ),
               Text(
                 "Nama Kejuaraan = " + datas['namaSertif'],
                 style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w500, fontSize: 10),
+                    fontWeight: FontWeight.w500, fontSize: 15),
               ),
               Text(
                 "Tingkat dan Juara = " + datas['tingkatSertif'] + " " + datas['juaraSertif'],
                 style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w500, fontSize: 10),
+                    fontWeight: FontWeight.w500, fontSize: 15),
               ),
             ]),
             Container(
